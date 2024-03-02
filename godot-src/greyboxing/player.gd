@@ -33,7 +33,7 @@ func _input(event):
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
 
 func rotate_cooldown():
-	return not (Time.get_ticks_msec() - last_rotated) > ROTATION_TIME_MS
+	return not (Time.get_ticks_msec() - last_rotated) > 1.1*ROTATION_TIME_MS
 
 func start_rotation(from,to):
 	rotation_percentage = 0
@@ -47,8 +47,10 @@ func slerp_rotation(delta):
 		transform.basis = rotate_from.slerp(rotate_to,rotation_percentage)
 		rotation_percentage += (delta*1000) / ROTATION_TIME_MS
 	else:
-		# Update physics basis to match any camera rotations etc.
-		physics_basis = transform.basis
+		if physics_basis != transform.basis:
+			# Update physics basis to match any camera rotations etc.
+			physics_basis = transform.basis.orthonormalized()
+			print("Updating physics basis")
 
 func _physics_process(delta):
 	#var local_velocity = transform.basis.inverse() * velocity
@@ -67,7 +69,7 @@ func _physics_process(delta):
 			
 			# TODO Interpolate w/ quaternions
 			#transform.basis = new_transform.basis
-			start_rotation(transform.basis,new_transform.basis)
+			start_rotation(transform.basis.orthonormalized(),new_transform.basis.orthonormalized())
 			
 			up_direction = get_floor_normal() # For correct floor detection
 			last_rotated = Time.get_ticks_msec()
