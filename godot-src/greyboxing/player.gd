@@ -7,7 +7,7 @@ const JUMP_VELOCITY = 10
 const GRAVITY_MULTIPLIER = 2
 const FALL_GRAVITY_MULTIPLIER = 3
 const TERMINAL_VELOCITY = 10
-const ROTATION_TIME_MS = 250
+const ROTATION_TIME_MS = 200
 const COYOTE_TIME_MS = 200
 
 var mouse_sensitivity = 0.002
@@ -19,6 +19,7 @@ var physics_basis = Basis()
 var rotation_percentage = 1.0
 var last_rotated = 0 # Last time we rotated, used for lockout
 var last_jumped = 0
+var last_on_floor = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -71,7 +72,10 @@ func avoid_wall_slipping(local_velocity):
 	return is_on_wall() and not is_on_floor() and abs(local_velocity.y) < 5
 
 func coyote_time():
-	return (Time.get_ticks_msec() - last_jumped) > COYOTE_TIME_MS
+	return (Time.get_ticks_msec() - last_on_floor) < COYOTE_TIME_MS
+
+func jump_timeout():
+	return (Time.get_ticks_msec() - last_jumped) < COYOTE_TIME_MS + 1
 
 func _physics_process(delta):
 	slerp_rotation(delta)
@@ -94,6 +98,7 @@ func _physics_process(delta):
 			up_direction = get_floor_normal() # For correct floor detection
 			last_rotated = Time.get_ticks_msec()
 			local_velocity.y = 0
+		last_on_floor = Time.get_ticks_msec()
 	elif local_velocity.y > 0:
 		local_velocity.y -= GRAVITY_MULTIPLIER * gravity * delta
 	else:
@@ -102,7 +107,7 @@ func _physics_process(delta):
 		#local_velocity.y = clamp(local_velocity.y,-TERMINAL_VELOCITY,TERMINAL_VELOCITY)
 	
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and (is_on_floor() or coyote_time()):
+	if Input.is_action_pressed("jump") and (is_on_floor() or coyote_time()) and not jump_timeout():
 		local_velocity.y = JUMP_VELOCITY
 		last_jumped = Time.get_ticks_msec()
 
