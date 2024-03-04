@@ -87,7 +87,7 @@ func _physics_process(delta):
 	if is_on_floor():
 		var normal = get_floor_normal()
 		var angle = normal.angle_to(transform.basis[1])
-		if (abs(angle - deg_to_rad(45)) < 0.01) and not currently_rotating():
+		if (abs(angle - deg_to_rad(45)) < 0.005) and not currently_rotating():
 			var axis = get_floor_normal().cross(transform.basis[1]).normalized()
 			var new_transform = transform.rotated(axis,-angle)
 			

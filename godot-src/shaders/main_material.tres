@@ -1,16 +1,30 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cbqidrv8qlsij"]
+[gd_resource type="ShaderMaterial" load_steps=16 format=3 uid="uid://cbqidrv8qlsij"]
 
 [ext_resource type="Shader" path="res://shaders/pixelPBR.gdshader" id="1_ulytk"]
-[ext_resource type="Texture2D" uid="uid://ddwwleydk2nne" path="res://assets/level/tileset.png" id="2_bjg42"]
+[ext_resource type="Texture2D" uid="uid://btiqv8wfi2esm" path="res://assets/textures/Moss004_2K-JPG/Moss004_2K-JPG_Color.jpg" id="2_rj1v1"]
+[ext_resource type="Texture2D" uid="uid://cwldlqby0k386" path="res://assets/level/tileset_material.png" id="2_rpqyw"]
+[ext_resource type="Texture2D" uid="uid://b054ytudqalxg" path="res://assets/level/tileset_normal.png" id="3_qnlm5"]
+[ext_resource type="Texture2D" uid="uid://d1qhwd1fmm2j0" path="res://assets/textures/Rock033_2K-JPG/Rock033_2K-JPG_Color.jpg" id="3_tqaiq"]
+[ext_resource type="Texture2D" uid="uid://bhtosgnfx2nhj" path="res://assets/textures/Wood062_2K-JPG/Wood062_2K-JPG_Color.jpg" id="4_ski6j"]
+[ext_resource type="Texture2D" uid="uid://ddqfy52grrtwn" path="res://assets/textures/Moss004_2K-JPG/Moss004_2K-JPG_Roughness.jpg" id="5_7kr8a"]
+[ext_resource type="Texture2D" uid="uid://j0tilbd7yexk" path="res://assets/textures/Concrete017_2K-JPG/Concrete017_2K-JPG_Color.jpg" id="5_24cj5"]
+[ext_resource type="Texture2D" uid="uid://dmkujt238xe08" path="res://assets/textures/Metal024_2K-JPG/Metal024_2K-JPG_Color.jpg" id="6_eyacm"]
+[ext_resource type="Texture2D" uid="uid://dpw5vooi0lss8" path="res://assets/textures/Metal041C_2K-JPG/Metal041C_2K-JPG_Color.jpg" id="7_3o4g5"]
+[ext_resource type="Texture2D" uid="uid://bw8lgmt2hgpiy" path="res://assets/textures/Rock033_2K-JPG/Rock033_2K-JPG_Roughness.jpg" id="8_fs136"]
+[ext_resource type="Texture2D" uid="uid://yoqsm4f55es4" path="res://assets/textures/Wood062_2K-JPG/Wood062_2K-JPG_Roughness.jpg" id="9_b4rmy"]
+[ext_resource type="Texture2D" uid="uid://hnyodc5eijia" path="res://assets/textures/Concrete017_2K-JPG/Concrete017_2K-JPG_Roughness.jpg" id="13_hcan4"]
+[ext_resource type="Texture2D" uid="uid://dffyk3dsd6syk" path="res://assets/textures/Metal024_2K-JPG/Metal024_2K-JPG_Roughness.jpg" id="14_pc6f6"]
+[ext_resource type="Texture2D" uid="uid://b2jvvarbikme6" path="res://assets/textures/Metal041C_2K-JPG/Metal041C_2K-JPG_Roughness.jpg" id="15_safq1"]
 
 [resource]
 render_priority = 0
 shader = ExtResource("1_ulytk")
-shader_parameter/texture_scale = 1.0
+shader_parameter/texture_scale = 3.0
 shader_parameter/use_material_normals = false
 shader_parameter/use_world_coords = false
-shader_parameter/webgl_mode = true
-shader_parameter/material_map = ExtResource("2_bjg42")
-shader_parameter/albedos = null
-shader_parameter/roughnesses = null
+shader_parameter/webgl_mode = false
+shader_parameter/material_map = ExtResource("2_rpqyw")
+shader_parameter/normal_map = ExtResource("3_qnlm5")
+shader_parameter/albedos = Array[Texture2D]([ExtResource("2_rj1v1"), ExtResource("3_tqaiq"), ExtResource("4_ski6j"), ExtResource("5_24cj5"), ExtResource("6_eyacm"), ExtResource("7_3o4g5")])
+shader_parameter/roughnesses = Array[Texture2D]([ExtResource("5_7kr8a"), ExtResource("8_fs136"), ExtResource("9_b4rmy"), ExtResource("13_hcan4"), ExtResource("14_pc6f6"), ExtResource("15_safq1")])
 shader_parameter/normalmaps = null

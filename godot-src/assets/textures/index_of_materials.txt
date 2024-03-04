@@ -1,10 +1,11 @@
 List of materials + numerical indices for eventual use in pixelPBR shader
 
-1. Moss: https://ambientcg.com/view?id=Moss004
-2. Rock: https://ambientcg.com/view?id=Rock033
-3. Wood: https://ambientcg.com/view?id=Wood062
-4. Concrete: https://ambientcg.com/view?id=Concrete017
-5. Painted Wood: https://ambientcg.com/view?id=PaintedWood003
-6: Brass (Metal 007): https://ambientcg.com/view?id=Metal007
-7. Medium steel: https://ambientcg.com/view?id=Metal024
-8. Rusty steel (Metal 041 C): https://ambientcg.com/view?id=Metal041C
+0. Moss: https://ambientcg.com/view?id=Moss004
+1. Rock: https://ambientcg.com/view?id=Rock033
+2. Wood: https://ambientcg.com/view?id=Wood062
+3. Concrete: https://ambientcg.com/view?id=Concrete017
+4. Medium steel: https://ambientcg.com/view?id=Metal024
+5. Rusty steel (Metal 041 C): https://ambientcg.com/view?id=Metal041C
+
+6. Painted Wood: https://ambientcg.com/view?id=PaintedWood003
+7: Brass (Metal 007): https://ambientcg.com/view?id=Metal007

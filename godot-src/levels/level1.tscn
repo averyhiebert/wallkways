@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=6 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
 [ext_resource type="PackedScene" uid="uid://xjifyb7inqte" path="res://objects/player.tscn" id="2_fnwgw"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
+
+[sub_resource type="Sky" id="Sky_6d5q5"]
+sky_material = SubResource("PhysicalSkyMaterial_dksax")
+
+[sub_resource type="Environment" id="Environment_mqsvq"]
+background_mode = 2
+sky = SubResource("Sky_6d5q5")
+ssr_enabled = true
+volumetric_fog_enabled = true
 
 [node name="Level1" type="Node3D"]
 
 [node name="level geometry" parent="." instance=ExtResource("1_m2py2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1573, 0, -0.861874)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="level geometry"]
+transform = Transform3D(1, 0, 0, 0, 0.960977, -0.276627, 0, 0.276627, 0.960977, 43.3558, 20.7587, -22.5297)
+visible = false
+light_energy = 3.263
+
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_fnwgw")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8015, 3.1682, 2.08447)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.88521, 11.0809, -22.2793)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.699551, 0.232103, -0.675838, -1.27026e-09, 0.94578, 0.324809, 0.714583, -0.22722, 0.661621, 17.7517, 15.5739, -23.7985)
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 3.212
+shadow_blur = 1.078
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mqsvq")

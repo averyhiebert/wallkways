@@ -1,5 +1,14 @@
 // Color-to-material shader for pixel-PBR style.
 
+// Some usage notes:
+//  - make sure to import normals, roughness, etc. as lossless
+//  - Crocotile tangents are borked and godot's mikkspace tangents don't fix it,
+//    using replace_tangents works ONLY IF tiles are always right-ways up.
+//    (for floor, tiles should be upright when Crocodile faces AWAY)
+//    (If you turn off "use single mesh" in Crocotile, then the tiles only have
+//     to be correctly oriented within the object, not wrt global basis)
+//  - normals might be borked when using world coordinates, not sure.
+
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,diffuse_burley,specular_schlick_ggx;
 
@@ -10,6 +19,7 @@ const float alpha_scissor_threshold = 0.5;
 uniform float texture_scale = 1.0; // scale the secondary textures, NOTE: INVERTED
 uniform bool use_material_normals = false;
 uniform bool use_world_coords = false;
+uniform bool replace_tangents = true;
 
 // To turn off the material sampling and just use albedo/normal map:
 uniform bool webgl_mode = false;
@@ -43,7 +53,7 @@ varying vec2 UV3;
 vec3[2] standardized_tangentspace_basis(vec3 normal, vec3 point) {
 	vec3 other_vector = vec3(0.0,1.0,0.0); // So that walls appear right-side up
 	if (length(normal - other_vector) < 0.01) {
-		other_vector = vec3(0.0,0.0,1.0); // Flat surfaces have "up" away from player
+		other_vector = vec3(0.0,0.0,1.0); // Flat surfaces have "up" facing +z
 	}
 	vec3 v1 = other_vector - normal * dot(other_vector,normal);
 	vec3 v2 = cross(v1,normal);
@@ -57,7 +67,14 @@ void vertex() {
 		position = (MODEL_MATRIX * vec4(VERTEX, 0.0)).xyz;
 		normal = (MODEL_MATRIX * vec4(NORMAL, 0.0)).xyz;
 	}
+	bool is_flat = length(normal - vec3(0.0,1.0,0.0)) < 0.01;
 	vec3 basis[2] = standardized_tangentspace_basis(normal,position);
+	
+	if (replace_tangents) {
+		TANGENT = basis[1];
+		BINORMAL = basis[0];
+	}
+	
 	if (use_material_normals) {
 		TANGENT = basis[0]; // Don't need to set binormal, it's calculated from normal + tangent
 	}
