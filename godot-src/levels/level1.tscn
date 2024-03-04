@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cclbvy3iqsbo0"]
+
+[ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
+[ext_resource type="PackedScene" uid="uid://xjifyb7inqte" path="res://objects/player.tscn" id="2_fnwgw"]
+
+[node name="Level1" type="Node3D"]
+
+[node name="level geometry" parent="." instance=ExtResource("1_m2py2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1573, 0, -0.861874)
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("2_fnwgw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.8015, 3.1682, 2.08447)

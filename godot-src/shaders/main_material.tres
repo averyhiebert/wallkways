@@ -1,0 +1,16 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cbqidrv8qlsij"]
+
+[ext_resource type="Shader" path="res://shaders/pixelPBR.gdshader" id="1_ulytk"]
+[ext_resource type="Texture2D" uid="uid://ddwwleydk2nne" path="res://assets/level/tileset.png" id="2_bjg42"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_ulytk")
+shader_parameter/texture_scale = 1.0
+shader_parameter/use_material_normals = false
+shader_parameter/use_world_coords = false
+shader_parameter/webgl_mode = true
+shader_parameter/material_map = ExtResource("2_bjg42")
+shader_parameter/albedos = null
+shader_parameter/roughnesses = null
+shader_parameter/normalmaps = null
