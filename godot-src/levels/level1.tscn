@@ -11,7 +11,7 @@ sky_material = SubResource("PhysicalSkyMaterial_dksax")
 [sub_resource type="Environment" id="Environment_mqsvq"]
 background_mode = 2
 sky = SubResource("Sky_6d5q5")
-ssr_enabled = true
+ssil_enabled = true
 volumetric_fog_enabled = true
 
 [node name="Level1" type="Node3D"]
@@ -20,7 +20,7 @@ volumetric_fog_enabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1573, 0, -0.861874)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="level geometry"]
-transform = Transform3D(1, 0, 0, 0, 0.960977, -0.276627, 0, 0.276627, 0.960977, 43.3558, 20.7587, -22.5297)
+transform = Transform3D(1, 0, 0, 0, 0.960977, -0.276627, 0, 0.276627, 0.960977, 12.4894, 11.0046, -16.3281)
 visible = false
 light_energy = 3.263
 

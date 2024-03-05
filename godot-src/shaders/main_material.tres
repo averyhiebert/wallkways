@@ -22,6 +22,7 @@ shader = ExtResource("1_ulytk")
 shader_parameter/texture_scale = 3.0
 shader_parameter/use_material_normals = false
 shader_parameter/use_world_coords = false
+shader_parameter/replace_tangents = true
 shader_parameter/webgl_mode = false
 shader_parameter/material_map = ExtResource("2_rpqyw")
 shader_parameter/normal_map = ExtResource("3_qnlm5")
