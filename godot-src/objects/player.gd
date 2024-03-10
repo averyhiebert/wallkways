@@ -21,6 +21,10 @@ var last_rotated = 0 # Last time we rotated, used for lockout
 var last_jumped = 0
 var last_on_floor = 0
 
+# Clicking stuff
+var current_clickable = null;
+@export var HUD: CanvasLayer = null;
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -77,11 +81,24 @@ func coyote_time():
 func jump_timeout():
 	return (Time.get_ticks_msec() - last_jumped) < COYOTE_TIME_MS + 1
 
+func check_clickable():
+	var raycast = %RayCast3D
+	if raycast.is_colliding():
+		var collider = raycast.get_collider()
+		if collider is Clickable and current_clickable != collider:
+			current_clickable = collider
+			HUD.set_hover_text(current_clickable.hover_text)
+	elif current_clickable:
+		current_clickable = null
+		print("No more clickable")
+		HUD.set_hover_text("")
+
 func _physics_process(delta):
 	slerp_rotation(delta)
 	
 	var local_velocity = physics_basis.inverse() * velocity
 	
+	check_clickable()
 	
 	# Add the gravity and/or start new rotation
 	if is_on_floor():
@@ -110,6 +127,9 @@ func _physics_process(delta):
 	if Input.is_action_pressed("jump") and (is_on_floor() or coyote_time()) and not jump_timeout():
 		local_velocity.y = JUMP_VELOCITY
 		last_jumped = Time.get_ticks_msec()
+	
+	if Input.is_action_just_pressed("flashlight"):
+		%flashlight.visible = !%flashlight.visible
 
 	# Get the input direction and handle the movement/deceleration.
 	var input_dir = Input.get_vector("left","right","forward","back")

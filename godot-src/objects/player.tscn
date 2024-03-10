@@ -9,7 +9,6 @@
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_0lxgf"]
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.579423, 1.26717, 0.412233)
 script = ExtResource("1_fnsom")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -18,7 +17,6 @@ shape = SubResource("SphereShape3D_wcrso")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.96, 0, 0, 0, 0.759462, 0, 0, 0, 0.96, 0, 0.341218, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_wu7fd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -29,3 +27,18 @@ mesh = SubResource("CapsuleMesh_0lxgf")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975797, 0)
 current = true
+
+[node name="flashlight" type="SpotLight3D" parent="Camera3D"]
+unique_name_in_owner = true
+visible = false
+light_energy = 2.131
+shadow_enabled = true
+shadow_blur = 2.515
+spot_range = 47.217
+spot_angle = 29.8494
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+unique_name_in_owner = true
+transform = Transform3D(0.138, 0, 0, 0, -2.18557e-07, -0.138, 0, 5, -6.03217e-09, 0, 0, 0)
+collision_mask = 3
+collide_with_areas = true

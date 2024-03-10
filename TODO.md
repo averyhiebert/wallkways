@@ -14,3 +14,24 @@
 - Goal: fix all antennas & then activate server with orientation code 0,1,0
 - Twist: There are upside-down messages insisting "correct" orientation is 0,-1,0.  Must choose correctly.
     - Main buildings are "upright" according to management, informal encampments are "upright" according to the union?
+- Language: labour & management couldn't "agree on a unified direction for the project"
+
+# Features needed for playtesting:
+- checkpoints
+- in-game menu minimum:
+    - mouse sensitivity, invert x/y, FOV
+    - Fullscreen?
+- ink integration for story elements
+    - hoverable items
+    - switch to UI (un-capture mouse)
+- proper display of signs
+
+# Features needed before release:
+- Text-only mode for intro/outro
+- main menu
+- fullscreen button?
+- UI styling
+- music, basic audio
+- visual polish
+    - particles on repaired antennas
+    - nicer lighting?

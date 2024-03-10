@@ -34,12 +34,10 @@ _subresources={
 "texture_1": {
 "use_external/enabled": true,
 "use_external/path": "res://shaders/main_material.tres"
-}
 },
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 2
+"texture_2": {
+"use_external/enabled": true,
+"use_external/path": "res://shaders/concrete_test.tres"
 }
 }
 }
