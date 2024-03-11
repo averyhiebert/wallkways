@@ -1,8 +1,8 @@
 extends CharacterBody3D
 
+signal clicked_item(knot)
 
 const SPEED = 5.0
-#const JUMP_VELOCITY = 4.5
 const JUMP_VELOCITY = 10
 const GRAVITY_MULTIPLIER = 2
 const FALL_GRAVITY_MULTIPLIER = 3
@@ -11,6 +11,8 @@ const ROTATION_TIME_MS = 200
 const COYOTE_TIME_MS = 200
 
 var mouse_sensitivity = 0.002
+
+var disabled = false # Used to turn off player control during text etc.
 
 # rotation stuff
 var rotate_from = Basis()
@@ -33,6 +35,8 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
+	if disabled:
+		return
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE # uncapture mouse
 	if event.is_action_pressed("click"):
@@ -88,6 +92,8 @@ func check_clickable():
 		if collider is Clickable and current_clickable != collider:
 			current_clickable = collider
 			HUD.set_hover_text(current_clickable.hover_text)
+		if Input.is_action_just_pressed("click"):
+			clicked_item.emit(current_clickable.knot)
 	elif current_clickable:
 		current_clickable = null
 		print("No more clickable")
@@ -95,6 +101,8 @@ func check_clickable():
 
 func _physics_process(delta):
 	slerp_rotation(delta)
+	if disabled:
+		return
 	
 	var local_velocity = physics_basis.inverse() * velocity
 	

@@ -35,3 +35,9 @@
 - visual polish
     - particles on repaired antennas
     - nicer lighting?
+
+# Trailer/screenshot ideas:
+- upside-down under walled area, looking towards main level.
+- upright looking at tower
+- something with text on screen. 
+- looking at sparking antenna?

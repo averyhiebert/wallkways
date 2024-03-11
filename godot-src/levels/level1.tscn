@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=10 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://dgbu1gmt5s7kx" path="res://objects/hud.tscn" id="1_8jp77"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
 [ext_resource type="PackedScene" uid="uid://xjifyb7inqte" path="res://objects/player.tscn" id="2_fnwgw"]
 [ext_resource type="Script" path="res://objects/clickable.gd" id="3_t5dat"]
+[ext_resource type="Script" path="res://objects/StoryController.gd" id="5_yinsa"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
 
@@ -32,6 +33,43 @@ size = Vector3(0.0349121, 2.32129, 3.65131)
 [node name="HUD" parent="." instance=ExtResource("1_8jp77")]
 unique_name_in_owner = true
 
+[node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("player", "HUD")]
+script = ExtResource("5_yinsa")
+player = NodePath("../CharacterBody3D")
+HUD = NodePath("../HUD")
+
+[node name="InkHolder" type="CanvasLayer" parent="StoryController"]
+layer = 2
+visible = false
+
+[node name="Control" type="Control" parent="StoryController/InkHolder"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="StoryController/InkHolder/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.6
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="story_rtf" type="RichTextLabel" parent="StoryController/InkHolder/Control/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+bbcode_enabled = true
+text = "placeholder"
+
 [node name="level geometry" parent="." instance=ExtResource("1_m2py2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.1573, 0, -0.861874)
 
@@ -59,7 +97,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5907, 2.24372, 4.11145)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_t5dat")
+knot = "entrance_sign"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179443, 0.345215, 0.0150452)
 shape = SubResource("BoxShape3D_8oyvp")
+
+[connection signal="clicked_item" from="CharacterBody3D" to="StoryController" method="start_from"]

@@ -15,9 +15,18 @@ run/main_scene="res://levels/level1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+__InkRuntime="*res://addons/inkgd/ink_runtime.gd"
+GlobalStory="*res://global/GlobalStory.gd"
+
 [editor]
 
 movie_writer/movie_file="/media/avery/largedisk/personal_projects/games/acerola_jam/video/video.avi"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/inkgd/plugin.cfg")
 
 [importer_defaults]
 
@@ -55,6 +64,10 @@ scene={
 "nodes/root_type": "",
 "skins/use_named_skins": true
 }
+
+[inkgd]
+
+register_templates=true
 
 [input]
 

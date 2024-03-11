@@ -3,7 +3,7 @@ class_name Clickable
 extends Area3D
 
 @export var hover_text = "interactable object";
-@export var ink_knot = "default";
+@export var knot = "default";
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
