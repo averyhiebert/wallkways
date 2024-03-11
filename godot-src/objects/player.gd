@@ -88,9 +88,9 @@ func jump_timeout():
 
 func check_clickable():
 	var raycast = %RayCast3D
-	if raycast.is_colliding():
+	if raycast.is_colliding() and raycast.get_collider() is Clickable:
 		var collider = raycast.get_collider()
-		if collider is Clickable and current_clickable != collider:
+		if current_clickable != collider:
 			current_clickable = collider
 			HUD.set_hover_text(current_clickable.hover_text)
 	elif current_clickable:
