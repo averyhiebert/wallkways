@@ -2,18 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8075yn0c7ong"
-path.s3tc="res://.godot/imported/level_1_2.png-11e547e348c0d4aff40cbb4cf53f9876.s3tc.ctex"
+uid="uid://b4cwv232jh1sx"
+path.s3tc="res://.godot/imported/Paper003_2K-JPG_NormalDX.jpg-40d3eca5c5ba6d8693a3ee255d32b672.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={}
 
 [deps]
 
-source_file="res://assets/level/levels/level_1_2.png"
-dest_files=["res://.godot/imported/level_1_2.png-11e547e348c0d4aff40cbb4cf53f9876.s3tc.ctex"]
+source_file="res://assets/textures/Paper003_2K-JPG/Paper003_2K-JPG_NormalDX.jpg"
+dest_files=["res://.godot/imported/Paper003_2K-JPG_NormalDX.jpg-40d3eca5c5ba6d8693a3ee255d32b672.s3tc.ctex"]
 
 [params]
 
@@ -21,7 +20,7 @@ compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

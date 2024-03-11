@@ -37,7 +37,11 @@ _subresources={
 },
 "texture_2": {
 "use_external/enabled": true,
-"use_external/path": "res://shaders/concrete_test.tres"
+"use_external/path": "res://shaders/paper_material.tres"
+},
+"texture_3": {
+"use_external/enabled": true,
+"use_external/path": "res://shaders/screen_material.tres"
 }
 }
 }

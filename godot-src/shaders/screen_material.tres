@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ysvj1g4bqdvc"]
+
+[ext_resource type="Texture2D" uid="uid://dxs7yslun4e5p" path="res://assets/level/levels/texture_3.png" id="1_28h4n"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_28h4n")
+metallic = 1.0
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 2.0
+emission_texture = ExtResource("1_28h4n")
+texture_filter = 0
