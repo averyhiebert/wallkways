@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://bnsg144swec7s"]
+
+[ext_resource type="Script" path="res://objects/antenna.gd" id="1_30w6b"]
+[ext_resource type="Script" path="res://objects/clickable.gd" id="2_ewtis"]
+[ext_resource type="Script" path="res://objects/repair_area.gd" id="3_2dggr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xw2bf"]
+size = Vector3(0.182037, 8.14844, 2.05981)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjgus"]
+size = Vector3(2.02942, 1.9285, 2.21344)
+
+[node name="antenna" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 4, 3.13392)
+script = ExtResource("1_30w6b")
+index = 1
+
+[node name="Clickable" type="Area3D" parent="."]
+script = ExtResource("2_ewtis")
+hover_text = "Antenna Mast"
+knot = "antenna_mast1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00730896, 4.00488, -0.0128174)
+shape = SubResource("BoxShape3D_xw2bf")
+
+[node name="repair_area" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.00687, 0)
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("3_2dggr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="repair_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.022522, -0.00123596, 0.0135193)
+shape = SubResource("BoxShape3D_fjgus")
+
+[connection signal="body_entered" from="repair_area" to="repair_area" method="_on_body_entered"]
+[connection signal="body_exited" from="repair_area" to="repair_area" method="_on_body_exited"]

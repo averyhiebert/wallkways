@@ -26,6 +26,7 @@ var last_on_floor = 0
 # Clicking stuff
 var current_clickable = null;
 @export var HUD: CanvasLayer = null;
+@export var spawn_points:Array[Node3D] = [];
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -92,16 +93,34 @@ func check_clickable():
 		if collider is Clickable and current_clickable != collider:
 			current_clickable = collider
 			HUD.set_hover_text(current_clickable.hover_text)
-		if Input.is_action_just_pressed("click"):
-			clicked_item.emit(current_clickable.knot)
 	elif current_clickable:
 		current_clickable = null
 		print("No more clickable")
 		HUD.set_hover_text("")
+	
+	if Input.is_action_just_pressed("click") and current_clickable:
+		clicked_item.emit(current_clickable.knot)
+
+func respawn():
+	var i = GlobalStory._ink_player.evaluate_function("respawn").return_value;
+	var spawn_point = spawn_points[i]
+	disabled = false
+	velocity = Vector3(0,0,0)
+	global_transform = spawn_point.global_transform
+	global_transform.basis = spawn_point.global_transform.basis
+	rotate_from = transform.basis
+	rotate_to = transform.basis
+	physics_basis = transform.basis
+	rotation_percentage = 1.0
+	up_direction = Vector3(0,1,0)
 
 func _physics_process(delta):
 	slerp_rotation(delta)
 	if disabled:
+		return
+	
+	if Input.is_action_just_released("respawn"):
+		respawn()
 		return
 	
 	var local_velocity = physics_basis.inverse() * velocity
@@ -154,3 +173,7 @@ func _physics_process(delta):
 	velocity = physics_basis * local_velocity
 	
 	move_and_slide()
+
+
+func _on_death_zone_body_exited(body):
+	respawn()

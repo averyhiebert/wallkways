@@ -17,24 +17,30 @@
 - Language: labour & management couldn't "agree on a unified direction for the project"
 
 # Features needed for playtesting:
-- checkpoints
 - in-game menu minimum:
     - mouse sensitivity, invert x/y, FOV
     - Fullscreen?
-- ink integration for story elements
-    - hoverable items
-    - switch to UI (un-capture mouse)
-- proper display of signs
+- proper display of signs and computer
+- computer part of story.
+- can only checkpoint while upright?
 
 # Features needed before release:
-- Text-only mode for intro/outro
-- main menu
-- fullscreen button?
+- Text-only mode for intro/outro?
+- main menu/credits
 - UI styling
-- music, basic audio
+- music
 - visual polish
     - particles on repaired antennas
-    - nicer lighting?
+    - flames on checkpoints?
+
+# Nice-to-have
+- fullscreen button?
+- nicer lighting?
+- basic audio cues
+    - antenna repair
+    - death
+    - checkpoint
+- more visual polish
 
 # Trailer/screenshot ideas:
 - upside-down under walled area, looking towards main level.

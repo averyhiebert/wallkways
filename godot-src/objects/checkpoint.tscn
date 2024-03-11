@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bm11qjedu60gt"]
+
+[ext_resource type="Script" path="res://objects/checkpoint.gd" id="1_2hfdm"]
+[ext_resource type="Script" path="res://objects/clickable.gd" id="2_g2bey"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_d8xl8"]
+height = 1.53124
+radius = 1.08624
+
+[node name="checkpoint" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 1.05275, 0.472041)
+script = ExtResource("1_2hfdm")
+
+[node name="Clickable" type="Area3D" parent="."]
+script = ExtResource("2_g2bey")
+hover_text = "checkpoint"
+knot = ""
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Clickable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.234471, 0)
+shape = SubResource("CylinderShape3D_d8xl8")
