@@ -17,7 +17,7 @@ index = 1
 
 [node name="Clickable" type="Area3D" parent="."]
 script = ExtResource("2_ewtis")
-hover_text = "Antenna Mast"
+hover_text = "antenna mast"
 knot = "antenna_mast1"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Clickable"]

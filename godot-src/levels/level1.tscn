@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=20 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://dgbu1gmt5s7kx" path="res://objects/hud.tscn" id="1_8jp77"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
@@ -8,11 +8,32 @@
 [ext_resource type="Script" path="res://objects/StoryController.gd" id="5_yinsa"]
 [ext_resource type="PackedScene" uid="uid://bnsg144swec7s" path="res://objects/antenna.tscn" id="6_ag1w7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_8oyvp"]
-size = Vector3(0.0349121, 2.32129, 3.65131)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gx56"]
 size = Vector3(1.54587, 1.40459, 1.1059)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fby5p"]
+size = Vector3(2.00427, 1.77985, 0.745331)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_26wsr"]
+size = Vector3(0.06073, 1.96855, 1.97699)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7y0ts"]
+size = Vector3(1.03137, 1.95972, 0.530151)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_51w7h"]
+size = Vector3(1.08279, 2.04431, 0.145264)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xglmy"]
+size = Vector3(0.0828857, 1.90533, 0.957706)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ocbc5"]
+size = Vector3(0.802979, 1.80136, 0.222168)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8p8nx"]
+size = Vector3(0.873474, 1.85364, 0.170166)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oyvp"]
+size = Vector3(0.0349121, 2.32129, 3.65131)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
 
@@ -106,17 +127,6 @@ transform = Transform3D(0.999822, 0, -0.0188485, 0, 1, 0, 0.0188485, 0, 0.999822
 [node name="spawn2" type="Node3D" parent="level geometry/spawnpoints"]
 transform = Transform3D(-0.237737, 0, 0.97133, 0, 1, 0, -0.97133, 0, -0.237737, 9.09876, 26.541, -3.38977)
 
-[node name="entrance_sign" type="Area3D" parent="level geometry"]
-transform = Transform3D(0.812898, 0, 0.582407, 0, 1, 0, -0.582407, 0, 0.812898, 8.5275, 2.20803, 4.94027)
-collision_layer = 2
-collision_mask = 0
-script = ExtResource("3_t5dat")
-knot = "entrance_sign"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/entrance_sign"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179443, 0.345215, 0.0150452)
-shape = SubResource("BoxShape3D_8oyvp")
-
 [node name="checkpoints" type="Node3D" parent="level geometry"]
 
 [node name="checkpoint0" parent="level geometry/checkpoints" instance=ExtResource("5_oqt80")]
@@ -135,6 +145,90 @@ collision_mask = 4
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/death_zone"]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 18.2083, 14.9788, -5.45349)
 shape = SubResource("BoxShape3D_8gx56")
+
+[node name="clickables" type="Node3D" parent="level geometry"]
+
+[node name="computer" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.99103, 13.2492, -9.46325)
+script = ExtResource("3_t5dat")
+hover_text = "control console"
+knot = "computer"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/computer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0233765, 0.389923, 0.23616)
+shape = SubResource("BoxShape3D_fby5p")
+
+[node name="instructions" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.421667, 14.0313, -10.0598)
+script = ExtResource("3_t5dat")
+hover_text = "instructions"
+knot = "instructions"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/instructions"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00491333, -0.0154953, 0.0582581)
+shape = SubResource("BoxShape3D_26wsr")
+
+[node name="union_busting" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.00998, 14.4441, -12.0348)
+script = ExtResource("3_t5dat")
+hover_text = "poster"
+knot = "anti_union_sign"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/union_busting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00131226, 0.0764236, 0.243134)
+shape = SubResource("BoxShape3D_7y0ts")
+
+[node name="note_2" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.02736, 9.56236, -9.10588)
+script = ExtResource("3_t5dat")
+hover_text = "poster"
+knot = "note_2"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/note_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0188446, -0.0663376, 0.118256)
+shape = SubResource("BoxShape3D_51w7h")
+
+[node name="fenced_sign" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.9697, 26.5333, -2.47642)
+script = ExtResource("3_t5dat")
+hover_text = "sign"
+knot = "fenced_sign"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/fenced_sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0283813, -0.0150452, -0.0277195)
+shape = SubResource("BoxShape3D_xglmy")
+
+[node name="note_3" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.4748, 17.9718, -1.44975)
+script = ExtResource("3_t5dat")
+hover_text = "handwritten note"
+knot = "note_3"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/note_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0214233, 0.0569611, -0.114389)
+shape = SubResource("BoxShape3D_ocbc5")
+
+[node name="note_1" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.96053, -6.52473, 1.98378)
+script = ExtResource("3_t5dat")
+hover_text = "note"
+knot = "note_1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/note_1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0367737, 0.012146, -0.0179443)
+shape = SubResource("BoxShape3D_8p8nx")
+
+[node name="entrance_sign" type="Area3D" parent="level geometry/clickables"]
+transform = Transform3D(0.812898, 0, 0.582407, 0, 1, 0, -0.582407, 0, 0.812898, 8.5275, 2.20803, 4.94027)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("3_t5dat")
+hover_text = "warning sign"
+knot = "entrance_sign"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="level geometry/clickables/entrance_sign"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179443, 0.345215, 0.0150452)
+shape = SubResource("BoxShape3D_8oyvp")
 
 [node name="CharacterBody3D" parent="." node_paths=PackedStringArray("HUD", "spawn_points") instance=ExtResource("2_fnwgw")]
 transform = Transform3D(0.388577, 0, 0.921416, 0, 1, 0, -0.921416, 0, 0.388577, 12.8513, 0.551543, 3.2999)

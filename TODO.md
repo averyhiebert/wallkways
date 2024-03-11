@@ -20,7 +20,6 @@
 - in-game menu minimum:
     - mouse sensitivity, invert x/y, FOV
     - Fullscreen?
-- proper display of signs and computer
 - computer part of story.
 - can only checkpoint while upright?
 
