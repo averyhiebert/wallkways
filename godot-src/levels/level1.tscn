@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=21 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://dgbu1gmt5s7kx" path="res://objects/hud.tscn" id="1_8jp77"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
+[ext_resource type="Script" path="res://objects/PauseMenu.gd" id="2_8m8ay"]
 [ext_resource type="PackedScene" uid="uid://xjifyb7inqte" path="res://objects/player.tscn" id="2_fnwgw"]
 [ext_resource type="Script" path="res://objects/clickable.gd" id="3_t5dat"]
 [ext_resource type="PackedScene" uid="uid://bm11qjedu60gt" path="res://objects/checkpoint.tscn" id="5_oqt80"]
@@ -51,13 +52,101 @@ fog_height = -7.0
 fog_height_density = 0.5052
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.06
-volumetric_fog_emission = Color(0.254902, 0.254902, 0.254902, 1)
-volumetric_fog_emission_energy = 0.0
+volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 
 [node name="Level1" type="Node3D"]
 
 [node name="HUD" parent="." instance=ExtResource("1_8jp77")]
 unique_name_in_owner = true
+
+[node name="PauseMenu" type="CanvasLayer" parent="." node_paths=PackedStringArray("player")]
+layer = 3
+visible = false
+script = ExtResource("2_8m8ay")
+player = NodePath("../CharacterBody3D")
+
+[node name="Control" type="Control" parent="PauseMenu"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PauseMenu/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Control/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "Settings"
+
+[node name="Label2" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="mouse_sensitivity_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 60.0
+value = 20.0
+ticks_on_borders = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="invert_x_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Invert X"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="invert_y_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "Invert Y"
+
+[node name="Label3" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Field Of View"
+
+[node name="fov_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+min_value = 60.0
+max_value = 120.0
+value = 75.0
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="fullscreen_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="exit_menu" type="Button" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Done"
 
 [node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("player", "HUD")]
 script = ExtResource("5_yinsa")
@@ -230,21 +319,28 @@ knot = "entrance_sign"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0179443, 0.345215, 0.0150452)
 shape = SubResource("BoxShape3D_8oyvp")
 
-[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("HUD", "spawn_points") instance=ExtResource("2_fnwgw")]
+[node name="CharacterBody3D" parent="." node_paths=PackedStringArray("HUD", "pause_menu", "spawn_points") instance=ExtResource("2_fnwgw")]
 transform = Transform3D(0.388577, 0, 0.921416, 0, 1, 0, -0.921416, 0, 0.388577, 12.8513, 0.551543, 3.2999)
 collision_layer = 4
 HUD = NodePath("../HUD")
+pause_menu = NodePath("../PauseMenu")
 spawn_points = [NodePath("../level geometry/spawnpoints/spawn0"), NodePath("../level geometry/spawnpoints/spawn1"), NodePath("../level geometry/spawnpoints/spawn2")]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
 shadow_enabled = true
 shadow_bias = 0.01
-shadow_normal_bias = 3.212
-shadow_blur = 1.078
+shadow_normal_bias = 4.131
+shadow_blur = 2.308
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")
 
+[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/VBoxContainer/mouse_sensitivity_slider" to="PauseMenu" method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer/invert_x_button" to="PauseMenu" method="_on_invert_x_button_toggled"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2/invert_y_button" to="PauseMenu" method="_on_invert_y_button_toggled"]
+[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/VBoxContainer/fov_slider" to="PauseMenu" method="_on_fov_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3/fullscreen_button" to="PauseMenu" method="_on_fullscreen_button_toggled"]
+[connection signal="pressed" from="PauseMenu/Control/PanelContainer/VBoxContainer/exit_menu" to="PauseMenu" method="_on_exit_menu_pressed"]
 [connection signal="body_exited" from="level geometry/death_zone" to="CharacterBody3D" method="_on_death_zone_body_exited"]
 [connection signal="clicked_item" from="CharacterBody3D" to="StoryController" method="start_from"]

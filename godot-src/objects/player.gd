@@ -11,6 +11,10 @@ const ROTATION_TIME_MS = 200
 const COYOTE_TIME_MS = 200
 
 var mouse_sensitivity = 0.002
+# Possible range: 0.0001 - 0.01?
+var invert_x_factor = 1 #-1 for inverted
+var invert_y_factor = 1
+var fov = 75
 
 var disabled = false # Used to turn off player control during text etc.
 
@@ -24,9 +28,10 @@ var last_jumped = 0
 var last_on_floor = 0
 
 # Clicking stuff
-var current_clickable = null;
-@export var HUD: CanvasLayer = null;
-@export var spawn_points:Array[Node3D] = [];
+var current_clickable = null
+@export var HUD: CanvasLayer = null
+@export var pause_menu: CanvasLayer = null
+@export var spawn_points:Array[Node3D] = []
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -40,15 +45,19 @@ func _input(event):
 		return
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE # uncapture mouse
-	if event.is_action_pressed("click"):
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		disabled = true
+		pause_menu.visible = true
 	
 	# Note: so far just copied from 
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED and not currently_rotating():
-		rotate_object_local(Vector3(0,1,0),-event.relative.x * mouse_sensitivity)
-		$Camera3D.rotate_object_local(Vector3(1,0,0),-event.relative.y * mouse_sensitivity)
+		rotate_object_local(Vector3(0,1,0),-event.relative.x * mouse_sensitivity * invert_x_factor)
+		$Camera3D.rotate_object_local(Vector3(1,0,0),-event.relative.y * mouse_sensitivity * invert_y_factor)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
+
+
+func regain_control():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	disabled = false
 
 func rotate_cooldown():
 	return not (Time.get_ticks_msec() - last_rotated) > ROTATION_TIME_MS
@@ -116,6 +125,9 @@ func respawn():
 
 func _physics_process(delta):
 	slerp_rotation(delta)
+	
+	# Update camera FOV if necessary
+	$Camera3D.fov = fov
 	if disabled:
 		return
 	
@@ -171,6 +183,8 @@ func _physics_process(delta):
 	
 	#velocity = transform.basis * local_velocity
 	velocity = physics_basis * local_velocity
+	
+
 	
 	move_and_slide()
 

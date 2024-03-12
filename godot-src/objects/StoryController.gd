@@ -29,9 +29,8 @@ func start_from(knot):
 
 func _exit_story_mode():
 		# TEMP: disable player
-	player.disabled = false
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	$InkHolder.visible = false
+	player.regain_control()
 
 # ############################################################################ #
 # Signal Receivers
