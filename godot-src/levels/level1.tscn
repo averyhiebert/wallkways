@@ -195,6 +195,7 @@ light_energy = 3.263
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1196, 0, 0.866173)
 
 [node name="antenna1" parent="level geometry/antennas" instance=ExtResource("6_ag1w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1684, 4.97868, 3.13392)
 
 [node name="antenna2" parent="level geometry/antennas" instance=ExtResource("6_ag1w7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -28.1499, 18.081, -12.862)
@@ -219,6 +220,7 @@ transform = Transform3D(-0.237737, 0, 0.97133, 0, 1, 0, -0.97133, 0, -0.237737, 
 [node name="checkpoints" type="Node3D" parent="level geometry"]
 
 [node name="checkpoint0" parent="level geometry/checkpoints" instance=ExtResource("5_oqt80")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.018, 1.05275, -1.98923)
 
 [node name="checkpoint1" parent="level geometry/checkpoints" instance=ExtResource("5_oqt80")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.57208, 12.9308, -14.4811)
@@ -308,7 +310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0367737, 0.012146, -0.01794
 shape = SubResource("BoxShape3D_8p8nx")
 
 [node name="entrance_sign" type="Area3D" parent="level geometry/clickables"]
-transform = Transform3D(0.812898, 0, 0.582407, 0, 1, 0, -0.582407, 0, 0.812898, 8.5275, 2.20803, 4.94027)
+transform = Transform3D(0.812898, 0, 0.582407, 0, 1, 0, -0.582407, 0, 0.812898, 8.5275, 2.20803, 3.94879)
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("3_t5dat")

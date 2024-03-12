@@ -39,6 +39,17 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	physics_basis = transform.basis
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if GlobalStory.player_ready:
+		_bind_ink_external()
+	else:
+		GlobalStory.player_loaded.connect(_bind_ink_external)
+
+func _bind_ink_external():
+	GlobalStory._ink_player.bind_external_function("player_upright", self, "is_upright")
+	
+func is_upright():
+	return (up_direction - Vector3(0,1,0)).length() < 0.001
 
 func _input(event):
 	if disabled:
@@ -53,7 +64,6 @@ func _input(event):
 		rotate_object_local(Vector3(0,1,0),-event.relative.x * mouse_sensitivity * invert_x_factor)
 		$Camera3D.rotate_object_local(Vector3(1,0,0),-event.relative.y * mouse_sensitivity * invert_y_factor)
 		$Camera3D.rotation.x = clampf($Camera3D.rotation.x, -deg_to_rad(70), deg_to_rad(70))
-
 
 func regain_control():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -74,10 +74,18 @@ VAR can_repair = false // update from within engine when close enough to an ante
 LIST locations = entrance=0, shed=1, walls=2
 VAR spawnpoint = (entrance)
 
+EXTERNAL player_upright()
+=== function player_upright ===
+~return true
+
 === set_checkpoint(n) ===
-~spawnpoint = locations(n)
-~repaired_checkpoint = repaired
-Progress saved.
+{player_upright():
+    ~spawnpoint = locations(n)
+    ~repaired_checkpoint = repaired
+    Progress saved.
+- else:
+    You can only save progress while oriented vertically.
+}
 -> exit
 
 // Shortcuts for Godot
