@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=16 format=3 uid="uid://cbqidrv8qlsij"]
+[gd_resource type="ShaderMaterial" load_steps=19 format=3 uid="uid://cbqidrv8qlsij"]
 
 [ext_resource type="Shader" path="res://shaders/pixelPBR.gdshader" id="1_ulytk"]
 [ext_resource type="Texture2D" uid="uid://btiqv8wfi2esm" path="res://assets/textures/Moss004_2K-JPG/Moss004_2K-JPG_Color.jpg" id="2_rj1v1"]
@@ -11,7 +11,10 @@
 [ext_resource type="Texture2D" uid="uid://dmkujt238xe08" path="res://assets/textures/Metal024_2K-JPG/Metal024_2K-JPG_Color.jpg" id="6_eyacm"]
 [ext_resource type="Texture2D" uid="uid://dpw5vooi0lss8" path="res://assets/textures/Metal041C_2K-JPG/Metal041C_2K-JPG_Color.jpg" id="7_3o4g5"]
 [ext_resource type="Texture2D" uid="uid://bw8lgmt2hgpiy" path="res://assets/textures/Rock033_2K-JPG/Rock033_2K-JPG_Roughness.jpg" id="8_fs136"]
+[ext_resource type="Texture2D" uid="uid://c0i6hedim7idv" path="res://assets/textures/Metal024_2K-JPG/Metal024_2K-JPG_Metalness.jpg" id="9_50ahj"]
 [ext_resource type="Texture2D" uid="uid://yoqsm4f55es4" path="res://assets/textures/Wood062_2K-JPG/Wood062_2K-JPG_Roughness.jpg" id="9_b4rmy"]
+[ext_resource type="Texture2D" uid="uid://bhgvjgstl7p3b" path="res://assets/textures/zero.png" id="9_frvov"]
+[ext_resource type="Texture2D" uid="uid://7mm0g5g1f2ed" path="res://assets/textures/Metal041C_2K-JPG/Metal041C_2K-JPG_Metalness.jpg" id="10_ld5yk"]
 [ext_resource type="Texture2D" uid="uid://hnyodc5eijia" path="res://assets/textures/Concrete017_2K-JPG/Concrete017_2K-JPG_Roughness.jpg" id="13_hcan4"]
 [ext_resource type="Texture2D" uid="uid://dffyk3dsd6syk" path="res://assets/textures/Metal024_2K-JPG/Metal024_2K-JPG_Roughness.jpg" id="14_pc6f6"]
 [ext_resource type="Texture2D" uid="uid://b2jvvarbikme6" path="res://assets/textures/Metal041C_2K-JPG/Metal041C_2K-JPG_Roughness.jpg" id="15_safq1"]
@@ -28,4 +31,5 @@ shader_parameter/material_map = ExtResource("2_rpqyw")
 shader_parameter/normal_map = ExtResource("3_qnlm5")
 shader_parameter/albedos = Array[Texture2D]([ExtResource("2_rj1v1"), ExtResource("3_tqaiq"), ExtResource("4_ski6j"), ExtResource("5_24cj5"), ExtResource("6_eyacm"), ExtResource("7_3o4g5")])
 shader_parameter/roughnesses = Array[Texture2D]([ExtResource("5_7kr8a"), ExtResource("8_fs136"), ExtResource("9_b4rmy"), ExtResource("13_hcan4"), ExtResource("14_pc6f6"), ExtResource("15_safq1")])
+shader_parameter/metalnesses = Array[Texture2D]([ExtResource("9_frvov"), ExtResource("9_frvov"), ExtResource("9_frvov"), ExtResource("9_frvov"), ExtResource("9_50ahj"), ExtResource("10_ld5yk")])
 shader_parameter/normalmaps = null

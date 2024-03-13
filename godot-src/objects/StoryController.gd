@@ -74,7 +74,6 @@ func _continued(text, tags):
 		get_tree().change_scene_to_file("res://levels/menu_scene.tscn")
 		pass
 	if "LEVEL1" in tags:
-		print("level1 in tags yo")
 		# Go to level 1 scene.
 		GlobalStory._ink_player.unbind_external_function("player_upright") # for safety
 		get_tree().change_scene_to_file("res://levels/level1.tscn")

@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1u45fomkxibx"]
+[gd_scene load_steps=7 format=3 uid="uid://b1u45fomkxibx"]
 
+[ext_resource type="Script" path="res://levels/camera_rotate.gd" id="3_7kbj6"]
 [ext_resource type="PackedScene" uid="uid://me72lehqtxc5" path="res://objects/story_controller.tscn" id="3_ilei7"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="4_g3xe7"]
 
@@ -37,6 +38,9 @@ shadow_blur = 2.308
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.501543, -0.326154, 0.801298, 0, 0.926214, 0.376998, -0.865133, -0.189081, 0.464536, 28.9135, 10.5934, -3.39046)
+[node name="camera_holder" type="Node3D" parent="."]
+transform = Transform3D(0.0758885, -0.751366, 0.655508, 0, 0.657404, 0.753538, -0.997116, -0.0571849, 0.0498894, 22.8329, 19.1882, -10.1945)
+
+[node name="Camera3D" type="Camera3D" parent="camera_holder"]
 current = true
+script = ExtResource("3_7kbj6")

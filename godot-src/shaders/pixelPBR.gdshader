@@ -41,6 +41,7 @@ uniform sampler2D normal_map: hint_normal,filter_nearest;
 // Details of the various textures
 uniform sampler2D albedos[MAX_MATERIALS] : source_color;
 uniform sampler2D roughnesses[MAX_MATERIALS];
+uniform sampler2D metalnesses[MAX_MATERIALS]; // optional
 uniform sampler2D normalmaps[MAX_MATERIALS]; // optional
 
 varying vec2 UV3;
@@ -111,6 +112,7 @@ void fragment() {
 		vec4 sampled_albedo = texture(albedos[material_index],UV3);
 		ALBEDO = sampled_albedo.rgb;
 		ROUGHNESS = texture(roughnesses[material_index],UV3).x;
+		METALLIC = texture(metalnesses[material_index],UV3).x;
 		if (use_material_normals) {
 			NORMAL_MAP = texture(normalmaps[material_index],UV3).rgb;
 		}
