@@ -4,14 +4,16 @@ VAR DEBUG = false
 === default ===
 ~can_repair = true
 Debugging hub
-+ antenna 1
++ [antenna 1]
     -> antenna_mast1
-+ antenna 2
++ [antenna 2]
     -> antenna_mast2
-+ antenna 3
++ [antenna 3]
     -> antenna_mast3
-+ computer
++ [computer]
     -> computer
++ [exit]
+    -> DONE
 -
 -> DONE
 
@@ -121,14 +123,14 @@ Frequency: 220 MHz
 
 === computer ===
 Initialize activation sequence (y/n)?
-+ {total_repaired == 3}[y]
++ {total_repaired == 3}[> y]
     -> activate
-+ {total_repaired < 3}[y]
++ {total_repaired < 3}[> y]
     ERROR: unable to initialize activation sequence.
     {LIST_COUNT(repaired)}/3 antennas functional.
     Please ensure all antennas are functional and try again.
     -> exit
-+ [n]
++ [> n]
     -> end 
 
 = activate
@@ -140,7 +142,7 @@ Select PRIMARY AXIS:
 Select FREQUENCY:
 -> choose_from(LIST_ALL(frequency_options)) ->
 Finalize activation sequence (y/n)?
- + [y]
+ + [> y]
     The screen goes black for a moment... #CLEAR
     -> continue ->
     The buildings around you begin to move with a shudder.
@@ -150,7 +152,7 @@ Finalize activation sequence (y/n)?
     - else:
         -> lose
     }
- + [n]
+ + [> n]
     SEQUENCE ABORTED
     ~selected = ()
     -> exit
@@ -161,6 +163,7 @@ Suddenly, you feel a strange, disorienting jolt.
 -> continue ->
 Just as suddenly, you regain awareness.
 The facility has returned to normalcy.
+-> continue ->
 The gravitational aberration has been brought under control.
 CONGRATULATIONS!
 (TODO Write better ending?)
@@ -170,7 +173,9 @@ CONGRATULATIONS!
 = lose
 #CLEAR
 Suddenly, the entire facility collapses to the ground with a sickening crash.
+-> continue ->
 As your head rushes towards the concrete, you realize that the activation sequence must have been incorrect.
+-> continue ->
 Not much you can do about it now, though.
 -> continue ->
 GAME OVER. #CLEAR
@@ -180,7 +185,7 @@ GAME OVER. #CLEAR
     
 
 = abort
-+ [ABORT]
++ [> ABORT]
     SEQUENCE ABORTED
     ~selected = ()
     -> exit
@@ -196,7 +201,7 @@ GAME OVER. #CLEAR
     }
     ~temp curr = LIST_MAX(candidates)
     <- choice_for_each(candidates - curr)
-    + > {curr}
+    + [> {curr}]
         ~selected += curr
         ->->
     -> DONE

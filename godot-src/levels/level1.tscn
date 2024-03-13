@@ -76,27 +76,30 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="PauseMenu/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.2
-anchor_right = 0.8
-anchor_bottom = 0.8
+anchor_left = 0.4
+anchor_top = 0.25
+anchor_right = 0.6
+anchor_bottom = 0.75
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Control/PanelContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="PauseMenu/Control/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Control/PanelContainer/CenterContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 
-[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 28
 text = "Settings"
 
-[node name="Label2" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Mouse Sensitivity"
 
-[node name="mouse_sensitivity_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="mouse_sensitivity_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 min_value = 1.0
@@ -104,47 +107,47 @@ max_value = 60.0
 value = 20.0
 ticks_on_borders = true
 
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="invert_x_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="invert_x_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Invert X"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="invert_y_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="invert_y_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "Invert Y"
 
-[node name="Label3" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Field Of View"
 
-[node name="fov_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="fov_slider" type="HSlider" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 60.0
 max_value = 120.0
 value = 75.0
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="fullscreen_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="fullscreen_button" type="CheckButton" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label" type="Label" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="exit_menu" type="Button" parent="PauseMenu/Control/PanelContainer/VBoxContainer"]
+[node name="exit_menu" type="Button" parent="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer"]
 layout_mode = 2
 text = "Done"
 
@@ -168,22 +171,17 @@ grow_vertical = 2
 [node name="PanelContainer" type="PanelContainer" parent="StoryController/InkHolder/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.2
-anchor_top = 0.6
-anchor_right = 0.8
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
+anchor_left = 0.3
+anchor_top = 0.25
+anchor_right = 0.7
+anchor_bottom = 0.75
 
 [node name="story_rtf" type="RichTextLabel" parent="StoryController/InkHolder/Control/PanelContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 24
 bbcode_enabled = true
-text = "placeholder"
+text = "help i am not good at ui"
 
 [node name="level geometry" parent="." instance=ExtResource("1_m2py2")]
 
@@ -338,11 +336,11 @@ shadow_blur = 2.308
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")
 
-[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/VBoxContainer/mouse_sensitivity_slider" to="PauseMenu" method="_on_mouse_sensitivity_slider_value_changed"]
-[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer/invert_x_button" to="PauseMenu" method="_on_invert_x_button_toggled"]
-[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer2/invert_y_button" to="PauseMenu" method="_on_invert_y_button_toggled"]
-[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/VBoxContainer/fov_slider" to="PauseMenu" method="_on_fov_slider_value_changed"]
-[connection signal="toggled" from="PauseMenu/Control/PanelContainer/VBoxContainer/HBoxContainer3/fullscreen_button" to="PauseMenu" method="_on_fullscreen_button_toggled"]
-[connection signal="pressed" from="PauseMenu/Control/PanelContainer/VBoxContainer/exit_menu" to="PauseMenu" method="_on_exit_menu_pressed"]
+[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/mouse_sensitivity_slider" to="PauseMenu" method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/invert_x_button" to="PauseMenu" method="_on_invert_x_button_toggled"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer2/invert_y_button" to="PauseMenu" method="_on_invert_y_button_toggled"]
+[connection signal="value_changed" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/fov_slider" to="PauseMenu" method="_on_fov_slider_value_changed"]
+[connection signal="toggled" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer3/fullscreen_button" to="PauseMenu" method="_on_fullscreen_button_toggled"]
+[connection signal="pressed" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/exit_menu" to="PauseMenu" method="_on_exit_menu_pressed"]
 [connection signal="body_exited" from="level geometry/death_zone" to="CharacterBody3D" method="_on_death_zone_body_exited"]
 [connection signal="clicked_item" from="CharacterBody3D" to="StoryController" method="start_from"]

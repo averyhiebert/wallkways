@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 __InkRuntime="*res://addons/inkgd/ink_runtime.gd"
 GlobalStory="*res://global/GlobalStory.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 movie_writer/movie_file="/media/avery/largedisk/personal_projects/games/acerola_jam/video/video.avi"

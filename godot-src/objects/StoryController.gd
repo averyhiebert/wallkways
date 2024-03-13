@@ -70,9 +70,7 @@ func _prompt_choices(choices):
 		var index = 0
 		for choice in choices:
 			if not (choice.text.begins_with("DEBUG")):
-				# (note: I adopt the convention that (( )) means a text-mode-only option
-				text_target.append_text("\n[center][url=%d]%s[/url][/center]\n" % [index, choice.text])
-				#text_target.append_bbcode("[url=%d]%s[/url]\n\n" % [index, choice])
+				text_target.append_text("\n[center][url=%d]%s[/url][/center]" % [index, choice.text])
 			index += 1
 
 

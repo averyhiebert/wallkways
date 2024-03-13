@@ -1,9 +1,3 @@
-# Features needed for playtesting:
-- in-game menu minimum:
-    - mouse sensitivity, invert x/y, FOV
-    - Fullscreen?
-- can only checkpoint while upright?
-
 # Features needed before release:
 - UI styling
     - use palette extracted from screenshot?
