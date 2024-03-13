@@ -11,6 +11,7 @@
 
 shader_type spatial;
 render_mode blend_mix,depth_draw_opaque,diffuse_burley,specular_schlick_ggx;
+//render_mode blend_add,depth_draw_opaque,diffuse_burley,specular_schlick_ggx;
 
 const int MAX_MATERIALS = 8; // CAN BE as big as 64, but ideally keep as small as possible
 const float alpha_scissor_threshold = 0.5;
