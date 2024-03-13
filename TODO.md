@@ -1,12 +1,11 @@
 # Nice-to-have
-- basic audio cues
+- basic audio cues?
     - antenna repair
     - death
     - checkpoint
     - computer beep
     - crash in ending
 - more visual polish
-    - add metallicity to shader
     - rotate wood grain 90 degrees
     - better model/normals for computer
     - blinking high-altitude lights?

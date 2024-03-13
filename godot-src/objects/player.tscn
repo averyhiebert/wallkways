@@ -25,7 +25,7 @@ visible = false
 mesh = SubResource("CapsuleMesh_0lxgf")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.975797, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06041, 0)
 current = true
 
 [node name="flashlight" type="SpotLight3D" parent="Camera3D"]

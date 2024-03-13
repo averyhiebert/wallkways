@@ -93,11 +93,15 @@ This license is available with a FAQ at openfontlicense.org
 
 === prologue ===
 ~BLACK_BACKGROUND = true
-The Gravitational Aberration Research Facility was abandoned 12 years ago due to labour issues.
+The Gravitational Aberration appeared unexpectedly 15 years ago, severely disrupting the local ecosystem.
 -> continue ->
-Allegedly, prior to shutting down the facility was on the verge of resolving the Aberration and restoring balance to the environment.
+A research facility was quickly established to investigate and, hopefully, eliminate the Aberration.
 -> continue ->
-Now, 12 years later, you have been dispatched to finish what was started and resolve the aberration.  Good luck.
+However, the facility was shut down and abandoned 12 years ago due to labour issues.
+-> continue ->
+Allegedly, the facility was on the verge of resolving the Aberration at the time when it was shut down.
+-> continue ->
+Now, 12 years later, you have been dispatched to finish what was started and resolve the Aberration.  Good luck.
 + [Begin your investigation...]
     ~BLACK_BACKGROUND = false
     # LEVEL1
@@ -255,7 +259,7 @@ Suddenly, the entire facility collapses to the ground with a sickening crash.
 -> continue ->
 As your head rushes towards the concrete, you realize that the activation sequence must have been incorrect.
 -> continue ->
-The facility has been destroyed, the Aberration remains, and the local environment will likely never recover.
+The facility has been destroyed, the Aberration remains, and the local environment may never recover.
 -> continue ->
 GAME OVER. #CLEAR
 <br>

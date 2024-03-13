@@ -1,0 +1,63 @@
+[gd_scene load_steps=6 format=3 uid="uid://cmhhgwk4uakw1"]
+
+[ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="2_pcvdl"]
+[ext_resource type="Script" path="res://levels/camera_rotate.gd" id="3_iimwt"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
+
+[sub_resource type="Sky" id="Sky_6d5q5"]
+sky_material = SubResource("PhysicalSkyMaterial_dksax")
+
+[sub_resource type="Environment" id="Environment_mqsvq"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_6d5q5")
+ssil_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_density = 0.0
+fog_height = -7.0
+fog_height_density = 0.5052
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.06
+volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
+
+[node name="Level1" type="Node3D"]
+
+[node name="level geometry" parent="." instance=ExtResource("2_pcvdl")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 4.131
+shadow_blur = 2.308
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mqsvq")
+
+[node name="camera_holder" type="Node3D" parent="."]
+transform = Transform3D(0.471942, -0.123076, 0.872996, -0.0615642, 0.983191, 0.171893, -0.879477, -0.134869, 0.456432, 3.52741, -0.93599, -4.31665)
+
+[node name="Camera3D" type="Camera3D" parent="camera_holder"]
+transform = Transform3D(-0.771454, 0.63325, 0.0620685, 0.0624008, 0.172374, -0.983052, -0.633219, -0.754507, -0.172494, 6.20976, -11.1009, -6.6115)
+current = true
+script = ExtResource("3_iimwt")
+ROTATION_SPEED = 0.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CenterContainer" type="CenterContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/CenterContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 5
+theme_override_constants/shadow_offset_y = 5
+theme_override_constants/shadow_outline_size = 18
+theme_override_font_sizes/font_size = 100
+text = "wallkways"
