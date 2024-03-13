@@ -1,6 +1,4 @@
 # Features needed before release:
-- UI styling
-    - use palette extracted from screenshot?
 - Text-only mode for intro/outro?
 - main menu/credits
 - music
@@ -16,6 +14,7 @@
     - computer beep
     - crash in ending
 - more visual polish
+    - rotate wood grain 90 degrees
     - better model/normals for computer
     - blinking high-altitude lights?
         - UV animation on lights/computer

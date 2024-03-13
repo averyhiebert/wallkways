@@ -32,6 +32,11 @@ movie_writer/movie_file="/media/avery/largedisk/personal_projects/games/acerola_
 
 enabled=PackedStringArray("res://addons/inkgd/plugin.cfg")
 
+[gui]
+
+theme/custom="res://ui/main_theme.tres"
+theme/custom_font="res://assets/fonts/Share_Tech_Mono/ShareTechMono-Regular.ttf"
+
 [importer_defaults]
 
 scene={

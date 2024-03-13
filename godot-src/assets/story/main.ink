@@ -212,6 +212,7 @@ GAME OVER. #CLEAR
 
 === entrance_sign ===
 WARNING: GRAVITATIONAL ABERRATION
+<br>
 Unsafe for human habitation.
 Enter at own risk.
 -> exit
