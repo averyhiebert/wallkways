@@ -4,6 +4,7 @@ var InkPlayer = load("res://addons/inkgd/ink_player.gd")
 
 @export var player:CharacterBody3D
 @export var HUD:CanvasLayer
+@export var starting_scene = ""
 
 #@onready var _ink_player = $InkPlayer
 @onready var _ink_player = InkPlayer.new()
@@ -20,17 +21,20 @@ func _ready():
 		GlobalStory.player_loaded.connect(_story_loaded)
 
 func start_from(knot):
-	player.disabled = true
+	if player:
+		player.disabled = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	$InkHolder.visible = true
-	HUD.set_hover_text("")
+	if HUD:
+		HUD.set_hover_text("")
 	GlobalStory._ink_player.choose_path(knot)
 	GlobalStory._ink_player.continue_story()
 
 func _exit_story_mode():
-		# TEMP: disable player
+	# TEMP: disable player
 	$InkHolder.visible = false
-	player.regain_control()
+	if player:
+		player.regain_control()
 
 # ############################################################################ #
 # Signal Receivers
@@ -42,6 +46,15 @@ func _story_loaded():
 	_ink_player.prompt_choices.connect(_prompt_choices)
 	_ink_player.ended.connect(_ended)
 	# Set up observers and bind external functions, if desired
+	GlobalStory._ink_player.observe_variables(["BLACK_BACKGROUND"],self,"set_background")
+	if player:
+		GlobalStory._ink_player.bind_external_function("player_upright", player, "is_upright")
+	
+	if starting_scene != "":
+		start_from(starting_scene)
+
+func set_background(name, new_value):
+	$InkHolder/black_backround.visible = new_value
 
 func _continued(text, tags):
 	

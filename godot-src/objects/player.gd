@@ -46,7 +46,8 @@ func _ready():
 		GlobalStory.player_loaded.connect(_bind_ink_external)
 
 func _bind_ink_external():
-	GlobalStory._ink_player.bind_external_function("player_upright", self, "is_upright")
+	#GlobalStory._ink_player.bind_external_function("player_upright", self, "is_upright")
+	pass
 	
 func is_upright():
 	return (up_direction - Vector3(0,1,0)).length() < 0.001

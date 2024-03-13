@@ -1,6 +1,8 @@
 VAR DEBUG = false
 -> default
 
+// Utils ==============================================================
+
 === default ===
 ~can_repair = true
 Debugging hub
@@ -31,6 +33,66 @@ Debugging hub
     - else:
         -> DONE
     }
+
+// Main Menu ======================================================================
+
+=== main_menu
+[center]WALLKWAYS[/center] #CLEAR
+[center]=========[/center]
++ [Play]
+  -> prologue
++ [Controls]
+  -> controls
++ [Credits]
+  -> credits
+
+= controls
+[center]Controls[/center] #CLEAR
+[center]========[/center]
+W/A/S/D or ARROW KEYS to move
+SPACE or SHIFT to jump
+LEFT CLICK to inspect/interact
+RIGHT CLICK for flashlight
+ESC for pause menu / settings
++ [Main Menu]
+  -> main_menu
+
+= credits
+[center]Credits[/center] #CLEAR
+[center]=======[/center]
+<br>
+A game by Avery Hiebert.
+<br>
+
+MUSIC
+Todo pick some music and then credit it.
+<br>
+
+PBR MATERIALS
+Created using multiple materials from ambientcg.com,
+licensed under the Creative Commons CC0 1.0 Universal License.
+<br>
+
+FONT
+Font used is Share Tech Mono
+
+Copyright (c) 2012, Carrois Type Design, Ralph du Carrois (post@carrois.com www.carrois.com), with Reserved Font Name 'Share'
+
+This Font Software is licensed under the SIL Open Font License, Version 1.1.
+This license is available with a FAQ at openfontlicense.org
+
++ [Main Menu]
+  -> main_menu
+
+
+// Prologue =======================================================================
+VAR BLACK_BACKGROUND = true
+
+=== prologue ===
+INTRO TEXT HERE.
+-> continue ->
+~BLACK_BACKGROUND = false
+-> end
 
 // Antennas ========================================================================
 
@@ -256,7 +318,6 @@ Keep up the good work, folks! ;)
 === flavour_1 ===
 ˙ʇɹos ǝɯos ɟo uoᴉʇɐloᴉʌ ∀HSO uɐ ǝq oʇ sɐɥ sᴉɥ┴  ˙dn sᴉ ʎɐʍ ɥɔᴉɥʍ ɹǝqɯǝɯǝɹ uǝʌǝ ʇ,uɐɔ I ƃuol os ǝɹǝɥ dn uǝǝq ǝʌ,I
 -> exit
-
 
 
 
