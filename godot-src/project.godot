@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="wallkways"
-run/main_scene="res://levels/level1.tscn"
+run/main_scene="res://levels/menu_scene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 __InkRuntime="*res://addons/inkgd/ink_runtime.gd"
 GlobalStory="*res://global/GlobalStory.gd"
+BackgroundMusic="*res://global/background_music.tscn"
 
 [display]
 

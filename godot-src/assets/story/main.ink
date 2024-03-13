@@ -1,4 +1,4 @@
-VAR DEBUG = false
+VAR DEBUG = true
 -> default
 
 // Utils ==============================================================
@@ -35,11 +35,13 @@ Debugging hub
     }
 
 // Main Menu ======================================================================
+VAR BLACK_BACKGROUND = false
 
 === main_menu
 [center]WALLKWAYS[/center] #CLEAR
 [center]=========[/center]
 + [Play]
+  ~BLACK_BACKGROUND = true
   -> prologue
 + [Controls]
   -> controls
@@ -88,13 +90,20 @@ This license is available with a FAQ at openfontlicense.org
 
 
 // Prologue =======================================================================
-VAR BLACK_BACKGROUND = true
 
 === prologue ===
-INTRO TEXT HERE.
+~BLACK_BACKGROUND = true
+The Gravitational Aberration Research Facility was abandoned 12 years ago due to labour issues.
 -> continue ->
-~BLACK_BACKGROUND = false
--> end
+Allegedly, prior to shutting down the facility was on the verge of resolving the Aberration and restoring balance to the environment.
+-> continue ->
+Now, 12 years later, you have been dispatched to finish what was started and resolve the aberration.  Good luck.
++ [Begin your investigation...]
+    ~BLACK_BACKGROUND = false
+    # LEVEL1
+    Good luck...
+    ++ [placeholder]
+        -> DONE
 
 // Antennas ========================================================================
 
@@ -207,9 +216,10 @@ Select FREQUENCY:
 -> choose_from(LIST_ALL(frequency_options)) ->
 Finalize activation sequence (y/n)?
  + [> y]
+    ~BLACK_BACKGROUND = true
     The screen goes black for a moment... #CLEAR
     -> continue ->
-    The buildings around you begin to move with a shudder.
+    The buildings around you begin to move with a shudder...
     -> continue ->
     {selected == correct:
         -> win
@@ -226,13 +236,18 @@ Finalize activation sequence (y/n)?
 Suddenly, you feel a strange, disorienting jolt.
 -> continue ->
 Just as suddenly, you regain awareness.
-The facility has returned to normalcy.
+Everything feels normal.
 -> continue ->
-The gravitational aberration has been brought under control.
+The Gravitational Aberration has been resolved.
+The local environment will thrive again.
+-> continue ->
 CONGRATULATIONS!
-(TODO Write better ending?)
-~selected = ()
--> exit
+<br>
+Thanks for playing!
+If you enjoyed the game, please consider paying for it :)
++ [Main Menu]
+    # MAIN_MENU
+    -> exit
 
 = lose
 #CLEAR
@@ -240,12 +255,17 @@ Suddenly, the entire facility collapses to the ground with a sickening crash.
 -> continue ->
 As your head rushes towards the concrete, you realize that the activation sequence must have been incorrect.
 -> continue ->
-Not much you can do about it now, though.
+The facility has been destroyed, the Aberration remains, and the local environment will likely never recover.
 -> continue ->
 GAME OVER. #CLEAR
-(TODO Write ending better).
-~selected = ()
--> exit
+<br>
+Thanks for playing!
+A better ending is still possible, if you're up for it.
+<br>
+If you enjoyed the game, please consider paying for it :)
++ [Main Menu]
+    # MAIN_MENU
+    -> exit
     
 
 = abort

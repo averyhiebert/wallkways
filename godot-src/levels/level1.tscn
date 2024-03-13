@@ -1,14 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=21 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://dgbu1gmt5s7kx" path="res://objects/hud.tscn" id="1_8jp77"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
 [ext_resource type="Script" path="res://objects/PauseMenu.gd" id="2_8m8ay"]
 [ext_resource type="PackedScene" uid="uid://xjifyb7inqte" path="res://objects/player.tscn" id="2_fnwgw"]
 [ext_resource type="Script" path="res://objects/clickable.gd" id="3_t5dat"]
+[ext_resource type="PackedScene" uid="uid://me72lehqtxc5" path="res://objects/story_controller.tscn" id="3_tq7gl"]
 [ext_resource type="PackedScene" uid="uid://bm11qjedu60gt" path="res://objects/checkpoint.tscn" id="5_oqt80"]
-[ext_resource type="Script" path="res://objects/StoryController.gd" id="5_yinsa"]
 [ext_resource type="PackedScene" uid="uid://bnsg144swec7s" path="res://objects/antenna.tscn" id="6_ag1w7"]
-[ext_resource type="AudioStream" uid="uid://bii3l7qqc6n4p" path="res://assets/music/pyrenees.mp3" id="9_gmjyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gx56"]
 size = Vector3(1.54587, 1.40459, 1.1059)
@@ -152,47 +151,10 @@ text = "Fullscreen"
 layout_mode = 2
 text = "Done"
 
-[node name="StoryController" type="Node" parent="." node_paths=PackedStringArray("player", "HUD")]
-script = ExtResource("5_yinsa")
+[node name="StoryController" parent="." node_paths=PackedStringArray("player", "HUD") instance=ExtResource("3_tq7gl")]
 player = NodePath("../CharacterBody3D")
 HUD = NodePath("../HUD")
-starting_scene = "main_menu"
-
-[node name="InkHolder" type="CanvasLayer" parent="StoryController"]
-layer = 2
-
-[node name="black_backround" type="ColorRect" parent="StoryController/InkHolder"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="Control" type="Control" parent="StoryController/InkHolder"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="StoryController/InkHolder/Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.3
-anchor_top = 0.25
-anchor_right = 0.7
-anchor_bottom = 0.75
-
-[node name="story_rtf" type="RichTextLabel" parent="StoryController/InkHolder/Control/PanelContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 24
-theme_override_font_sizes/bold_font_size = 24
-theme_override_font_sizes/italics_font_size = 24
-bbcode_enabled = true
-text = "help i am not good at ui"
+starting_scene = ""
 
 [node name="level geometry" parent="." instance=ExtResource("1_m2py2")]
 
@@ -346,10 +308,6 @@ shadow_blur = 2.308
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_gmjyn")
-autoplay = true
 
 [connection signal="value_changed" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/mouse_sensitivity_slider" to="PauseMenu" method="_on_mouse_sensitivity_slider_value_changed"]
 [connection signal="toggled" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/invert_x_button" to="PauseMenu" method="_on_invert_x_button_toggled"]

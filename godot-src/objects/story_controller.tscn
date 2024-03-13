@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://me72lehqtxc5"]
+
+[ext_resource type="Script" path="res://objects/StoryController.gd" id="1_eyv5a"]
+
+[node name="StoryController" type="Node"]
+script = ExtResource("1_eyv5a")
+starting_scene = "main_menu"
+
+[node name="InkHolder" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="black_backround" type="ColorRect" parent="InkHolder"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="InkHolder"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="InkHolder/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.3
+anchor_top = 0.25
+anchor_right = 0.7
+anchor_bottom = 0.75
+
+[node name="story_rtf" type="RichTextLabel" parent="InkHolder/Control/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+bbcode_enabled = true
+text = "help i am not good at ui"

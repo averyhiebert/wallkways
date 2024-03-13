@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cms7m4g3nj32c"]
+
+[ext_resource type="AudioStream" uid="uid://bii3l7qqc6n4p" path="res://assets/music/pyrenees.mp3" id="1_k27ew"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_k27ew")
+autoplay = true

@@ -21,6 +21,7 @@ func _ready():
 		GlobalStory.player_loaded.connect(_story_loaded)
 
 func start_from(knot):
+	print("Called start_from")
 	if player:
 		player.disabled = true
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -42,6 +43,7 @@ func _exit_story_mode():
 
 func _story_loaded():
 	_ink_player = GlobalStory._ink_player
+	_ink_player.reset() # ensure story is reset when entering game proper
 	_ink_player.continued.connect(_continued)
 	_ink_player.prompt_choices.connect(_prompt_choices)
 	_ink_player.ended.connect(_ended)
@@ -49,9 +51,14 @@ func _story_loaded():
 	GlobalStory._ink_player.observe_variables(["BLACK_BACKGROUND"],self,"set_background")
 	if player:
 		GlobalStory._ink_player.bind_external_function("player_upright", player, "is_upright")
+	else:
+		GlobalStory._ink_player.bind_external_function("player_upright", self, "dummy_external")
 	
 	if starting_scene != "":
 		start_from(starting_scene)
+
+func dummy_external():
+	return true
 
 func set_background(name, new_value):
 	$InkHolder/black_backround.visible = new_value
@@ -61,6 +68,17 @@ func _continued(text, tags):
 	if "CLEAR" in tags:
 		# Clear before next line.
 		text_target.clear()
+	if "MAIN_MENU" in tags:
+		# Go to main menu scene
+		GlobalStory._ink_player.unbind_external_function("player_upright") # for safety
+		get_tree().change_scene_to_file("res://levels/menu_scene.tscn")
+		pass
+	if "LEVEL1" in tags:
+		print("level1 in tags yo")
+		# Go to level 1 scene.
+		GlobalStory._ink_player.unbind_external_function("player_upright") # for safety
+		get_tree().change_scene_to_file("res://levels/level1.tscn")
+		pass
 	for tag in tags:
 		if tag.begins_with("AUDIO:"):
 			# TODO

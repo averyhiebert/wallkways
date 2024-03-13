@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://b1u45fomkxibx"]
+
+[ext_resource type="PackedScene" uid="uid://me72lehqtxc5" path="res://objects/story_controller.tscn" id="3_ilei7"]
+[ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="4_g3xe7"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
+
+[sub_resource type="Sky" id="Sky_6d5q5"]
+sky_material = SubResource("PhysicalSkyMaterial_dksax")
+
+[sub_resource type="Environment" id="Environment_mqsvq"]
+background_mode = 2
+background_energy_multiplier = 2.0
+sky = SubResource("Sky_6d5q5")
+ssil_enabled = true
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_density = 0.0
+fog_height = -7.0
+fog_height_density = 0.5052
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.06
+volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
+
+[node name="Level1" type="Node3D"]
+
+[node name="StoryController" parent="." instance=ExtResource("3_ilei7")]
+
+[node name="level geometry" parent="." instance=ExtResource("4_g3xe7")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 4.131
+shadow_blur = 2.308
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mqsvq")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.501543, -0.326154, 0.801298, 0, 0.926214, 0.376998, -0.865133, -0.189081, 0.464536, 28.9135, 10.5934, -3.39046)
+current = true
