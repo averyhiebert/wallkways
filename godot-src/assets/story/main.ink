@@ -64,8 +64,10 @@ ESC for pause menu / settings
 A game by Avery Hiebert.
 <br>
 
-MUSIC
-Todo pick some music and then credit it.
+AUDIO
+"Mountain pyrenees early evening bird" by PLukx of freesound.org
+CC0
+freesound.org/people/PLukx/sounds/430588/
 <br>
 
 PBR MATERIALS

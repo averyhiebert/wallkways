@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://cclbvy3iqsbo0"]
+[gd_scene load_steps=22 format=3 uid="uid://cclbvy3iqsbo0"]
 
 [ext_resource type="PackedScene" uid="uid://dgbu1gmt5s7kx" path="res://objects/hud.tscn" id="1_8jp77"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="1_m2py2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bm11qjedu60gt" path="res://objects/checkpoint.tscn" id="5_oqt80"]
 [ext_resource type="Script" path="res://objects/StoryController.gd" id="5_yinsa"]
 [ext_resource type="PackedScene" uid="uid://bnsg144swec7s" path="res://objects/antenna.tscn" id="6_ag1w7"]
+[ext_resource type="AudioStream" uid="uid://bii3l7qqc6n4p" path="res://assets/music/pyrenees.mp3" id="9_gmjyn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8gx56"]
 size = Vector3(1.54587, 1.40459, 1.1059)
@@ -345,6 +346,10 @@ shadow_blur = 2.308
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_gmjyn")
+autoplay = true
 
 [connection signal="value_changed" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/mouse_sensitivity_slider" to="PauseMenu" method="_on_mouse_sensitivity_slider_value_changed"]
 [connection signal="toggled" from="PauseMenu/Control/PanelContainer/CenterContainer/VBoxContainer/HBoxContainer/invert_x_button" to="PauseMenu" method="_on_invert_x_button_toggled"]

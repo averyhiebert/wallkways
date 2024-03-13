@@ -1,6 +1,4 @@
 # Features needed before release:
-- Text-only mode for intro/outro?
-- main menu/credits
 - music
 - visual polish
     - particles on repaired antennas
