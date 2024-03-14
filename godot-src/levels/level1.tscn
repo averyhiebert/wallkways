@@ -46,7 +46,6 @@ background_mode = 2
 background_energy_multiplier = 2.0
 sky = SubResource("Sky_6d5q5")
 reflected_light_source = 2
-ssil_enabled = true
 fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
 fog_density = 0.0
 fog_height = -7.0

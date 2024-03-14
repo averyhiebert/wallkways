@@ -1,6 +1,7 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ysvj1g4bqdvc"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://ysvj1g4bqdvc"]
 
 [ext_resource type="Texture2D" uid="uid://dxs7yslun4e5p" path="res://assets/level/levels/texture_3.png" id="1_28h4n"]
+[ext_resource type="Texture2D" uid="uid://j85ei1ixeaau" path="res://assets/level/texture_3_normal.png" id="2_s431p"]
 
 [resource]
 transparency = 2
@@ -12,4 +13,6 @@ roughness = 0.0
 emission_enabled = true
 emission_energy_multiplier = 2.0
 emission_texture = ExtResource("1_28h4n")
+normal_enabled = true
+normal_texture = ExtResource("2_s431p")
 texture_filter = 0
