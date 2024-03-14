@@ -37,6 +37,16 @@ Debugging hub
 // Main Menu ======================================================================
 VAR BLACK_BACKGROUND = false
 
+=== web_warning
+~BLACK_BACKGROUND = true
+[center][b]WARNING[/b][/center]
+You are about to play the HTML5 version of [i]wallkways[/i].
+This version of the game looks completely different (worse).
+For the intended experience (see screenshots), play the downloadable version if possible.
++ [I understand]
+  ~BLACK_BACKGROUND = false
+  -> main_menu
+
 === main_menu
 [center]WALLKWAYS[/center] #CLEAR
 [center]=========[/center]

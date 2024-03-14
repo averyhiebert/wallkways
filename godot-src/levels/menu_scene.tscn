@@ -27,6 +27,7 @@ volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 [node name="Level1" type="Node3D"]
 
 [node name="StoryController" parent="." instance=ExtResource("3_ilei7")]
+starting_scene = "web_warning"
 
 [node name="level geometry" parent="." instance=ExtResource("4_g3xe7")]
 
