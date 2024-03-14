@@ -162,4 +162,5 @@ respawn={
 
 [rendering]
 
+renderer/rendering_method="gl_compatibility"
 anti_aliasing/screen_space_roughness_limiter/enabled=false

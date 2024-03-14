@@ -4,21 +4,23 @@
 [ext_resource type="PackedScene" uid="uid://me72lehqtxc5" path="res://objects/story_controller.tscn" id="3_ilei7"]
 [ext_resource type="PackedScene" uid="uid://bm8dbtpmahja1" path="res://assets/level/levels/level_1.glb" id="4_g3xe7"]
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hf0sp"]
+sky_top_color = Color(0.517647, 0.552941, 0.607843, 1)
+sky_horizon_color = Color(0.517647, 0.552941, 0.607843, 1)
+ground_bottom_color = Color(0.517647, 0.552941, 0.607843, 1)
+ground_horizon_color = Color(0.517647, 0.552941, 0.607843, 1)
 
 [sub_resource type="Sky" id="Sky_6d5q5"]
-sky_material = SubResource("PhysicalSkyMaterial_dksax")
+sky_material = SubResource("ProceduralSkyMaterial_hf0sp")
 
-[sub_resource type="Environment" id="Environment_mqsvq"]
+[sub_resource type="Environment" id="Environment_tojee"]
 background_mode = 2
-background_energy_multiplier = 2.0
 sky = SubResource("Sky_6d5q5")
-ssil_enabled = true
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-fog_density = 0.0
-fog_height = -7.0
-fog_height_density = 0.5052
-volumetric_fog_enabled = true
+reflected_light_source = 2
+fog_enabled = true
+fog_sun_scatter = 1.0
+fog_density = 0.05
+fog_height = 50.0
 volumetric_fog_density = 0.06
 volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 
@@ -28,19 +30,20 @@ volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 
 [node name="level geometry" parent="." instance=ExtResource("4_g3xe7")]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
-shadow_enabled = true
-shadow_bias = 0.01
-shadow_normal_bias = 4.131
-shadow_blur = 2.308
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_mqsvq")
-
 [node name="camera_holder" type="Node3D" parent="."]
 transform = Transform3D(0.0758885, -0.751366, 0.655508, 0, 0.657404, 0.753538, -0.997116, -0.0571849, 0.0498894, 22.8329, 19.1882, -10.1945)
 
 [node name="Camera3D" type="Camera3D" parent="camera_holder"]
 current = true
 script = ExtResource("3_7kbj6")
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tojee")
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
+light_energy = 0.8
+shadow_enabled = true
+shadow_bias = 0.01
+shadow_normal_bias = 4.131
+shadow_opacity = 0.89

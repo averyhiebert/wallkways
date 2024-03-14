@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c10lix4ondqdw"]
+
+[ext_resource type="Texture2D" uid="uid://bqj7siie75px1" path="res://assets/level/tileset_albedo.png" id="1_wryc0"]
+[ext_resource type="Texture2D" uid="uid://kl1h4yqua6yr" path="res://assets/level/tileset_metallic.png" id="2_gslir"]
+[ext_resource type="Texture2D" uid="uid://b054ytudqalxg" path="res://assets/level/tileset_normal.png" id="3_uokmg"]
+[ext_resource type="Texture2D" uid="uid://dy4jmkf7t4jdy" path="res://assets/level/tileset_roughness.png" id="4_8gi2s"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_wryc0")
+metallic = 1.0
+metallic_texture = ExtResource("2_gslir")
+roughness_texture = ExtResource("4_8gi2s")
+normal_enabled = true
+normal_texture = ExtResource("3_uokmg")
+texture_filter = 0

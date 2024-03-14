@@ -36,21 +36,23 @@ size = Vector3(0.873474, 1.85364, 0.170166)
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oyvp"]
 size = Vector3(0.0349121, 2.32129, 3.65131)
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_dksax"]
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y1cpy"]
+sky_top_color = Color(0.517647, 0.552941, 0.607843, 1)
+sky_horizon_color = Color(0.517647, 0.552941, 0.607843, 1)
+ground_bottom_color = Color(0.517647, 0.552941, 0.607843, 1)
+ground_horizon_color = Color(0.517647, 0.552941, 0.607843, 1)
 
-[sub_resource type="Sky" id="Sky_6d5q5"]
-sky_material = SubResource("PhysicalSkyMaterial_dksax")
+[sub_resource type="Sky" id="Sky_g1tpr"]
+sky_material = SubResource("ProceduralSkyMaterial_y1cpy")
 
 [sub_resource type="Environment" id="Environment_mqsvq"]
 background_mode = 2
-background_energy_multiplier = 2.0
-sky = SubResource("Sky_6d5q5")
+sky = SubResource("Sky_g1tpr")
 reflected_light_source = 2
-fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
-fog_density = 0.0
-fog_height = -7.0
-fog_height_density = 0.5052
-volumetric_fog_enabled = true
+fog_enabled = true
+fog_sun_scatter = 1.0
+fog_density = 0.05
+fog_height = 50.0
 volumetric_fog_density = 0.06
 volumetric_fog_emission = Color(0.34902, 0.34902, 0.34902, 1)
 
@@ -301,10 +303,11 @@ spawn_points = [NodePath("../level geometry/spawnpoints/spawn0"), NodePath("../l
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.449444, 0.351768, -0.821133, -1.49012e-08, 0.919204, 0.393781, 0.893309, 0.176982, -0.413131, -18.3292, 9.6431, -5.54896)
+light_energy = 0.8
 shadow_enabled = true
 shadow_bias = 0.01
 shadow_normal_bias = 4.131
-shadow_blur = 2.308
+shadow_opacity = 0.89
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mqsvq")

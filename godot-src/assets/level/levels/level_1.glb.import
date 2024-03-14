@@ -33,7 +33,7 @@ _subresources={
 "materials": {
 "texture_1": {
 "use_external/enabled": true,
-"use_external/path": "res://shaders/main_material.tres"
+"use_external/path": "res://shaders/webgl_main_material.tres"
 },
 "texture_2": {
 "use_external/enabled": true,
